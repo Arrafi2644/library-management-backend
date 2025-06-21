@@ -1,4 +1,3 @@
-import { Join } from './../node_modules/mongodb/src/mongo_types';
 import express, {Application, Request, Response} from "express";
 const app: Application = express();
 

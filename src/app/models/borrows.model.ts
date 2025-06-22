@@ -16,7 +16,7 @@ const borrowSchema = new Schema<IBorrow>({
         type: Date,
         required: [true, "Must provide the due date"],
     },
-});
+}, {timestamps: true});
 
 
 export const Borrow = mongoose.model("Borrow", borrowSchema)

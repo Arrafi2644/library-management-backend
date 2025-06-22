@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 import app from "./app";
 import dotenv from "dotenv";
 import booksRoutes from "./app/controllers/books.controllers";
+import borrowRoutes from './app/controllers/borrows.controllers';
 dotenv.config();
 
 let server: Server;
@@ -11,6 +12,7 @@ let server: Server;
 const PORT = 5000;
 
 app.use('/books', booksRoutes)
+app.use('/borrow', borrowRoutes)
 
 async function main() {
     try {

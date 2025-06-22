@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
-import { IBook } from "../interfaces/books.interface";
+import { BookStaticMethod, IBook } from "../interfaces/books.interface";
 
-const bookSchema = new Schema<IBook>({
+const bookSchema = new Schema<IBook, BookStaticMethod>({
 title: {
         type: String,
         required: [true, "Title is required but got {VALUE}"]
@@ -40,4 +40,23 @@ title: {
 
 )
 
-export const Book = mongoose.model('Book', bookSchema)
+bookSchema.statics.borrowBook = async function(book: string, quantity: number) {
+  const foundBook = await this.findById(book);
+  if (!foundBook) {
+    throw new Error("Book not found");
+  }
+
+  if (foundBook.copies < quantity) {
+    throw new Error("Not enough copies available");
+  }
+
+  foundBook.copies -= quantity;
+  if (foundBook.copies === 0) {
+    foundBook.available = false;
+  }
+
+  await foundBook.save();
+  return foundBook;
+};
+
+export const Book = mongoose.model<IBook, BookStaticMethod>('Book', bookSchema)

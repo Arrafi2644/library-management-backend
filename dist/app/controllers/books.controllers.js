@@ -41,7 +41,10 @@ booksRoutes.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const sortBy = req.query.sortBy || "createdAT";
         const sort = req.query.sort === "asc" ? 1 : -1;
         const limit = parseInt(req.query.limit) || 10;
-        const query = { genre: filter };
+        let query = {};
+        if (filter) {
+            query.genre = filter;
+        }
         const books = yield books_model_1.Book.find(query)
             .sort({ [sortBy]: sort })
             .limit(limit);

@@ -56,4 +56,70 @@ booksRoutes.get('/', async (req: Request, res: Response) => {
     }
 })
 
+// get book by id 
+
+booksRoutes.get('/:bookId', async (req: Request, res: Response) => {
+    try {
+        const bookId = req.params.bookId;
+
+        const book = await Book.findById(bookId)
+
+        res.status(200).json({
+            success: true,
+            message: "Book retrieved successfully",
+            data: book
+        })
+    } catch (error: any) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+            error: error
+        })
+    }
+})
+
+// update book 
+booksRoutes.patch('/:bookId', async (req: Request, res: Response) => {
+    try {
+        const bookId = req.params.bookId;
+        const updatedBook = req.body;
+
+        const book = await Book.findByIdAndUpdate(bookId, updatedBook, { new: true })
+
+        res.status(200).json({
+            success: true,
+            message: "Book updated successfully",
+            data: book
+        })
+    } catch (error: any) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+            error: error
+        })
+    }
+})
+
+// delete book
+
+booksRoutes.delete('/:bookId', async (req: Request, res: Response) => {
+    try {
+        const bookId = req.params.bookId;
+
+        const book = await Book.findByIdAndDelete(bookId)
+
+        res.status(200).json({
+            success: true,
+            message: "Book deleted successfully",
+            data: null
+        })
+    } catch (error: any) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+            error: error
+        })
+    }
+})
+
 export default booksRoutes;

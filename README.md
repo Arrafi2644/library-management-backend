@@ -15,7 +15,6 @@ A RESTful API built using **Express**, **TypeScript**, and **MongoDB (Mongoose)*
 - Schema validation using Mongoose
 - Static method for business logic
 - Aggregation pipeline for reports
-- Mongoose middleware (pre/post)
 - Filtering, sorting, and limiting support
 
 ---
@@ -133,7 +132,7 @@ Request:
   "quantity": 2,
   "dueDate": "2025-07-18T00:00:00.000Z"
 }
-```
+
 Business Logic:
 
     Checks available copies
@@ -207,6 +206,7 @@ Response:
     Aggregation pipeline for summary
 
 ⚙️ Setup Instructions
+
 ```
 git clone https://github.com/your-username/library-management-api.git
 cd library-management-api

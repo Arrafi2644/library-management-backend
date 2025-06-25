@@ -11,8 +11,8 @@ let server: Server;
 
 const PORT = 5000;
 
-app.use('/books', booksRoutes)
-app.use('/borrow', borrowRoutes)
+app.use('/api/books', booksRoutes)
+app.use('/api/borrow', borrowRoutes)
 
 async function main() {
     try {

@@ -82,7 +82,7 @@ booksRoutes.get('/:bookId', (req, res) => __awaiter(void 0, void 0, void 0, func
     }
 }));
 // update book 
-booksRoutes.patch('/:bookId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+booksRoutes.put('/:bookId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const bookId = req.params.bookId;
         const updatedBook = req.body;

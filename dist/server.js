@@ -20,8 +20,8 @@ const borrows_controllers_1 = __importDefault(require("./app/controllers/borrows
 dotenv_1.default.config();
 let server;
 const PORT = 5000;
-app_1.default.use('/books', books_controllers_1.default);
-app_1.default.use('/borrow', borrows_controllers_1.default);
+app_1.default.use('/api/books', books_controllers_1.default);
+app_1.default.use('/api/borrow', borrows_controllers_1.default);
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

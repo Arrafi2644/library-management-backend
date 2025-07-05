@@ -16,9 +16,11 @@ app.use('/api/borrow', borrowRoutes)
 
 async function main() {
     try {
-        await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.rnfomgx.mongodb.net/library-management-app?retryWrites=true&w=majority&appName=Cluster0`)
+
+        await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.zrnmc7c.mongodb.net/library-management-application?retryWrites=true&w=majority&appName=Cluster0`)
 
         console.log("Mongoose is connected successfully");
+
 
         server = app.listen(PORT, () => {
             console.log(`Library management is running on port ${PORT}`);

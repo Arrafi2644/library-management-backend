@@ -12,6 +12,7 @@ booksRoutes.post('/', async (req: Request, res: Response) => {
         const bookBody = req.body;
 
         const book = await Book.create(bookBody);
+        console.log(book);
 
         res.status(201).json({
             success: true,
@@ -20,6 +21,7 @@ booksRoutes.post('/', async (req: Request, res: Response) => {
         })
 
     } catch (error: any) {
+        console.log(error);
         res.status(500).json({
             success: false,
             message: error.message,
